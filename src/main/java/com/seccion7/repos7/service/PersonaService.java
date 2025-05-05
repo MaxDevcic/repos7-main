@@ -1,5 +1,7 @@
 package com.seccion7.repos7.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,19 @@ public class PersonaService {
 
     public Persona guardar(Persona persona){
         return personaRepository.create(persona);
-       
+    
+    }
+
+    public List<Persona> listartodas(){
+        return personaRepository.readAll();
+    }
+
+    public Persona buscarporid(int id) {
+        return personaRepository.read(id);
+    }
+
+    public Persona modificarPersona(int id, Persona personamod)
+    {
+        return personaRepository.update(id, personamod);
     }
 }

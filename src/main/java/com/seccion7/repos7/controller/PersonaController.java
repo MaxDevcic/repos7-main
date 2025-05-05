@@ -6,10 +6,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.seccion7.repos7.model.Persona;
 import com.seccion7.repos7.service.PersonaService;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+
 
 
 
@@ -21,14 +27,26 @@ public class PersonaController {
     private PersonaService personaService;
 
     @GetMapping
-    public String saludar() {
-        return "Holi funciona el Servicio";
+    public List<Persona> listaPersonas() {
+        return personaService.listartodas();
     }
 
     @PostMapping
     public Persona crearPersona(@RequestBody Persona persona) {
+        System.out.println();
         return personaService.guardar(persona);
 
+    }
+
+    @GetMapping("/{id}") //.../api/personas/id
+    public Persona getbyid(@PathVariable int id) {
+        return personaService.buscarporid(id);
+    }
+    
+
+    @PutMapping("/{id}")
+    public Persona putMethodName(@PathVariable int id, @RequestBody Persona personamod) {  
+        return personaService.modificarPersona(id, personamod);
     }
     
     
