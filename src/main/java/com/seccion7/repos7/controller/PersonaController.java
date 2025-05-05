@@ -9,6 +9,7 @@ import com.seccion7.repos7.service.PersonaService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,5 +50,9 @@ public class PersonaController {
         return personaService.modificarPersona(id, personamod);
     }
     
-    
+    @DeleteMapping("/{id}")
+    public String deletePersona(@PathVariable int id)
+    {
+        return personaService.eliminarPersona(id);
+    }
 }

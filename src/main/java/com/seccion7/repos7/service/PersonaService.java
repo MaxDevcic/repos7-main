@@ -30,4 +30,10 @@ public class PersonaService {
     {
         return personaRepository.update(id, personamod);
     }
+
+    public String eliminarPersona(int id)
+    {
+        personaRepository.delete(id);
+        return "Persona eliminada";
+    }
 }

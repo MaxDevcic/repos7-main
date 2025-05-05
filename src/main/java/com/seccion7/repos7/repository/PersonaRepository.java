@@ -54,4 +54,13 @@ public class PersonaRepository {
         }
         return null;
     }
+
+    public String delete(int id) {
+        Persona kill = read(id);
+        if(kill!=null)
+        {
+            personas.remove(kill);
+        }
+        return null;
+    }
 }
